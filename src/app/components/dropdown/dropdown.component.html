@@ -1,5 +1,5 @@
-<div class="dropdown-container"
-     [class.disabled]="disabled$ | async">
+<div class="dropdown-container" [class.disabled]="disabled$ | async">
+
   <div class="selection-container"
        (click)="toggle = !toggle"
        [class.open]="toggle">
@@ -9,6 +9,7 @@
                   [ngTemplateOutletContext]="{$implicit: selected.value}"></ng-container>
     <img src="../../../assets/icons/arrow-down.svg">
   </div>
+
   <div class="options-container"
        [class.open]="toggle">
     <app-search (searchChanged)="searchChanged($event)"></app-search>
@@ -19,4 +20,5 @@
                 (selectChanged)="selectChanged($event)"></app-list>
     </div>
   </div>
+
 </div>

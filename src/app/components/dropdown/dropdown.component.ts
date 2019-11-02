@@ -1,4 +1,11 @@
-import {Component, OnInit, Input, ChangeDetectionStrategy, OnDestroy, TemplateRef, ViewChild} from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  TemplateRef,
+  ViewChild
+} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Subject, BehaviorSubject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -18,7 +25,7 @@ import {SearchComponent} from './components/search/search.component';
     }
   ]
 })
-export class DropdownComponent implements OnInit, OnDestroy, ControlValueAccessor {
+export class DropdownComponent implements OnDestroy, ControlValueAccessor {
 
   @ViewChild(SearchComponent, {read: SearchComponent, static: false}) search: SearchComponent;
 
@@ -38,8 +45,6 @@ export class DropdownComponent implements OnInit, OnDestroy, ControlValueAccesso
 
   constructor() {}
 
-  ngOnInit() {
-  }
 
   ngOnDestroy() {
     this.onDestroy$.next();
@@ -51,7 +56,7 @@ export class DropdownComponent implements OnInit, OnDestroy, ControlValueAccesso
       [...this.sourceOptions] :
       this.sourceOptions
         .filter(option => Object.values(option)
-        .some(value => value.toString().toLowerCase().indexOf(term.toLowerCase()) !== -1));
+          .some(value => value.toString().toLowerCase().indexOf(term.toLowerCase()) !== -1));
     this.displayedOptions$.next(filteredOptions);
   }
 
