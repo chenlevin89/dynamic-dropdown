@@ -1,0 +1,7 @@
+<div class="option"
+     *ngFor="let option of options"
+     (click)="selectChanged.emit(option)"
+     [class.selected]="selected === option">
+  <ng-container [ngTemplateOutlet]="templateRef"
+                [ngTemplateOutletContext]="{$implicit: option}"></ng-container>
+</div>

@@ -1,0 +1,13 @@
+:host{
+  .option{
+    cursor: pointer;
+    padding: 5px 14px;
+    color: #172d4c;
+    &:hover{
+      background-color: #f9fafb;
+    }
+    &.selected{
+      border-left: 2px solid #2196f3;
+    }
+  }
+}

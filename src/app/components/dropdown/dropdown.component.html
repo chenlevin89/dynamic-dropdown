@@ -1,0 +1,22 @@
+<div class="dropdown-container"
+     [class.disabled]="disabled$ | async">
+  <div class="selection-container"
+       (click)="toggle = !toggle"
+       [class.open]="toggle">
+    <p *ngIf="!selected.value">Select option</p>
+    <ng-container *ngIf="selected.value"
+                  [ngTemplateOutlet]="templateRef"
+                  [ngTemplateOutletContext]="{$implicit: selected.value}"></ng-container>
+    <img src="../../../assets/icons/arrow-down.svg">
+  </div>
+  <div class="options-container"
+       [class.open]="toggle">
+    <app-search (searchChanged)="searchChanged($event)"></app-search>
+    <div class="list">
+      <app-list [options]="displayedOptions$ | async"
+                [templateRef]="templateRef"
+                [selected]="selected.value"
+                (selectChanged)="selectChanged($event)"></app-list>
+    </div>
+  </div>
+</div>
