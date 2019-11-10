@@ -4,7 +4,8 @@ import {
   ChangeDetectionStrategy,
   OnDestroy,
   TemplateRef,
-  ViewChild
+  ViewChild,
+  ChangeDetectorRef
 } from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Subject, BehaviorSubject} from 'rxjs';
@@ -43,7 +44,7 @@ export class DropdownComponent implements OnDestroy, ControlValueAccessor {
   private sourceOptions: any[] = [];
   private onDestroy$ = new Subject();
 
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
 
   ngOnDestroy() {
@@ -68,6 +69,7 @@ export class DropdownComponent implements OnDestroy, ControlValueAccessor {
 
   writeValue(obj: any): void {
     this.selected.setValue(obj);
+    this.cdr.markForCheck();
   }
 
   registerOnChange(fn: any): void {
